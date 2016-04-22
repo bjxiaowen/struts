@@ -31,7 +31,7 @@ public class HelloWorldAction extends ActionSupport{
         this.message = message;  
     }  
   
-    @Action(value="/helloWorld", results={@Result(name="success",location="/helloWorld.jsp")})
+    @Action(value="/helloWorld", results={@Result(name="success",location="helloWorld.jsp")})
     public String execute() throws Exception  {  
         setMessage(MESSAGE);  
         return SUCCESS;  

@@ -4,6 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<!-- 结果资源所在路径，这个地方要注意，详见下面解释 -->
+	<constant name="struts.convention.result.path" value="/"/>
 <!-- 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<package name="default" namespace="/" extends="struts-default">
 	</package> -->

@@ -22,7 +22,7 @@ public class WelcomeAction extends ActionSupport{
 		this.username = username;
 	}
 
-	@Action(value="/welcome", results={@Result(name="success",location="/welcome_user.jsp")})
+	@Action(value="/welcome", results={@Result(name="success",location="welcome_user.jsp")})
 	public String welcome() {
 		System.out.println("你好！！！");
 		return "success";
