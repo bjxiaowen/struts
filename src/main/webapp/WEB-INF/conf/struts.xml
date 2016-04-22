@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<constant name="struts.i18n.encoding" value="utf-8"/>
-<!-- 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<package name="default" namespace="/" extends="struts-default">
-	</package> -->
+	</package>
 </struts>

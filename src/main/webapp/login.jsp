@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>登录</h1>
-	<s:form action="Welcome">
+	<s:form action="welcome">
 		<s:textfield name="username" label="Username" />
 		<s:password name="password" label="Password" />
 		<s:submit />
