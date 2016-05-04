@@ -5,8 +5,42 @@
 <struts>
 	<constant name="struts.i18n.encoding" value="utf-8"/>
 	<!-- 结果资源所在路径，这个地方要注意，详见下面解释 -->
-	<constant name="struts.convention.result.path" value="/"/>
-<!-- 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-	<package name="default" namespace="/" extends="struts-default">
-	</package> -->
+ 	<constant name="struts.convention.result.path" value="/"/>
+ 	
+ 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+ 	<!-- 当struts.xml配置文件发生修改，会立刻加载，在生产环境下最好不要配置 -->
+	<constant name="struts.configuration.xml.reload" value="true"/>
+	<!-- 会提供更加友好的提示信息 -->
+	<constant name="struts.devMode" value="true"/>
+	<package name="struts2" namespace="/"  extends="struts-default">
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<!-- 自定义拦截链 -->
+			<interceptor name="authority" class="com.struts.interceptors.MyInterceptor">
+				<param name="hello">Andy</param>
+				<param name="excludeMethods">welcome,query</param>
+			</interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"/>
+				<!-- 执行顺序与配置顺序有关 -->
+				<interceptor-ref name="authority" >  
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 设置默认拦截链,一个package下只能配置一个,应用所有的没有配置拦截器或拦截链的Action -->
+		 <default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<!-- 定义全局Result -->  
+        <global-results>  
+            <!-- 当返回login视图名时，转入/login.jsp页面 -->  
+            <result name="login">/login.jsp</result>  
+        </global-results>
+        
+        <action name="welcome" method="welcome" class="com.struts.action.WelcomeAction">
+        	<result name="success">/welcome.jsp</result>
+        </action>
+        
+        <action name="hello" method="helloWorld" class="com.struts.action.HelloWorldAction">
+        	<result name="success">helloWorld.jsp</result>
+        </action>
+	</package>
 </struts>

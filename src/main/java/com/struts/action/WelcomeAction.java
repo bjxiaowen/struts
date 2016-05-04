@@ -1,10 +1,10 @@
 package com.struts.action;
 
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import com.opensymphony.xwork2.ActionSupport;
-@ParentPackage("struts-default")
+//@Namespace("/")
 public class WelcomeAction extends ActionSupport{
 
 	/**
@@ -22,7 +22,7 @@ public class WelcomeAction extends ActionSupport{
 		this.username = username;
 	}
 
-	@Action(value="/welcome", results={@Result(name="success",location="welcome_user.jsp")})
+	//@Action(value="welcome", results={@Result(name="success",location="welcome.jsp")})
 	public String welcome() {
 		System.out.println("你好！！！");
 		return "success";

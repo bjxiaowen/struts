@@ -3,9 +3,11 @@ package com.struts.action;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.InterceptorRef;  
+import org.apache.struts2.convention.annotation.InterceptorRefs;  
 
 import com.opensymphony.xwork2.ActionSupport;
-@Namespace("/test")
+//@Namespace("/test")
 public class HelloWorldAction extends ActionSupport{
 
 	/**
@@ -31,8 +33,8 @@ public class HelloWorldAction extends ActionSupport{
         this.message = message;  
     }  
   
-    @Action(value="/helloWorld", results={@Result(name="success",location="helloWorld.jsp")})
-    public String execute() throws Exception  {  
+    //@Action(value="/helloWorld", results={@Result(name="success",location="helloWorld.jsp")})
+    public String helloWorld() throws Exception  {  
         setMessage(MESSAGE);  
         return SUCCESS;  
     }  
