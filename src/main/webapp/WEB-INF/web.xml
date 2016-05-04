@@ -4,6 +4,13 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
 	<display-name>struts2</display-name>
+	
+	<!-- 上下文对象参数 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/conf/applicationContext*.xml</param-value>
+	</context-param>
+	
 	<!-- Struts2配置 -->
 	<filter>
 		<filter-name>struts2</filter-name>
