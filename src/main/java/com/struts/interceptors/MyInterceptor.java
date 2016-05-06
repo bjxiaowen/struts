@@ -59,13 +59,14 @@ public class MyInterceptor implements Interceptor {
         if(excludeMethods.contains(methodName)){
         	System.out.println("我在做判断！！！！");
         }
-        String actionName = proxy.getActionName(); 
+        return invocation.invoke();
+      /*  String actionName = proxy.getActionName(); 
 		if (user != null && user.equals("yuewei")) {
 			System.out.println("test");
 			return invocation.invoke();
 		}
 		ctx.put("tip", "你还没有登录");
-		return Action.LOGIN;
+		return Action.LOGIN;*/
 	}
 
 }

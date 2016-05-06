@@ -1,1 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- Database Configuration -->
+	<import resource="dataSource.xml"/>
+	
+	<bean id="customerDAO" class="com.struts.dao.impl.CustomerDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="customerService" class="com.struts.service.impl.CustomerServiceImpl">
+		<property name="customerDAO" ref="customerDAO"></property>
+	</bean>
+ 
+ 	<bean id="welcomeAction" class="com.struts.action.WelcomeAction">
+ 		<property name="customerService" ref="customerService"></property>
+ 	</bean>
+ 
+</beans>
