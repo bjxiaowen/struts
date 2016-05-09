@@ -22,7 +22,6 @@ public class WelcomeAction extends ActionSupport{
 	
 
 	public void setCustomerService(ICustomerService customerService) {
-//		 org.hibernate.cache.CacheProvider aa=new  org.hibernate.cache.CacheProvider();
 		this.customerService = customerService;
 	}
 

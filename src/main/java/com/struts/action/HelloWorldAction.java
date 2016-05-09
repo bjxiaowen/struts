@@ -35,8 +35,6 @@ public class HelloWorldAction extends ActionSupport{
   
     //@Action(value="/helloWorld", results={@Result(name="success",location="helloWorld.jsp")})
     public String helloWorld() throws Exception  {  
-    	//org.objectweb.asm.ClassVisitor aa=new org.objectweb.asm.ClassVisitor();
-    	 //net.sf.cglib.core.DebuggingClassWriter aa=new  net.sf.cglib.core.DebuggingClassWriter();
         setMessage(MESSAGE);  
         return SUCCESS;  
     }  
