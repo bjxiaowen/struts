@@ -42,5 +42,9 @@
         <action name="hello" method="helloWorld" class="com.struts.action.HelloWorldAction">
         	<result name="success">helloWorld.jsp</result>
         </action>
+        
+        <action name="login" method="login" class="com.struts.action.LoginAction">
+        	<result name="success">helloWorld.jsp</result>
+        </action>
 	</package>
 </struts>
