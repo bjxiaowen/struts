@@ -2,7 +2,8 @@ package com.struts.service;
 
 import java.util.List;
 
-import com.test.pojo.Customer;
+import com.struts.pojo.Customer;
+
 
 public interface ICustomerService {
 

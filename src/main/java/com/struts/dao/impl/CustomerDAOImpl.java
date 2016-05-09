@@ -2,10 +2,10 @@ package com.struts.dao.impl;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.struts.dao.ICustomerDAO;
-import com.test.pojo.Customer;
+import com.struts.pojo.Customer;
 
 public class CustomerDAOImpl extends HibernateDaoSupport implements ICustomerDAO{
 
