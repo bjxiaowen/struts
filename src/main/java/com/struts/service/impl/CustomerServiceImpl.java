@@ -2,12 +2,17 @@ package com.struts.service.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.struts.dao.ICustomerDAO;
 import com.struts.pojo.Customer;
 import com.struts.service.ICustomerService;
-
+@Service("customerService")
 public class CustomerServiceImpl implements ICustomerService {
 	
+	@Resource(name="customerDAO")
 	ICustomerDAO customerDAO;
 
 

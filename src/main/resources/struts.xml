@@ -3,16 +3,38 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<constant name="struts.i18n.encoding" value="utf-8"/>
+
+	<!--指定Web应用的默认编码集.该属性对于处理中文请求参数非常有用,对于获取中文请求参数值,应该将该属性值设置为GBK或者GB2312; 
+	提示:当设置该参数为GBK时,相当于调用HttpServletRequest的setCharacterEncoding方法. -->
+	<constant name="struts.i18n.encoding" value="utf-8" />
+
 	<!-- 结果资源所在路径，这个地方要注意，详见下面解释 -->
- 	<constant name="struts.convention.result.path" value="/"/>
+	<constant name="struts.convention.result.path" value="/" />
+
+	<!--指定Struts 2默认的ObjectFactory Bean,该属性默认值是spring. > -->
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<!--指定Spring框架的自动装配模式, 该属性的默认值是name, 即默认根据Bean的name属性自动装配. -->  
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+	
+	<!--该属性指定整合Spring框架时,是否缓存Bean实例,该属性只允许使用true和false两个属性值,它的默认值是true.通常不建议修改该属性值. -->  
+ 	<constant name="struts.objectFactory.spring.useClassCache" value="true" />
  	
- 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
- 	<!-- 当struts.xml配置文件发生修改，会立刻加载，在生产环境下最好不要配置 -->
-	<constant name="struts.configuration.xml.reload" value="true"/>
+ 	<!--该属性指定需要Struts 2处理的请求后缀,该属性的默认值是action,即所有匹配*.action的请求都由Struts 2处理.如果用户需要指定多个请求后缀,则多个后缀之间以英文逗号(,)隔开. -->  
+ 	<constant name="struts.action.extension" value="do" />    
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	
+	<!-- 当struts.xml配置文件发生修改，会立刻加载，在生产环境下最好不要配置 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	
+	
 	<!-- 会提供更加友好的提示信息 -->
-	<constant name="struts.devMode" value="true"/>
-	<package name="struts2" namespace="/"  extends="struts-default">
+	<constant name="struts.devMode" value="true" />
+	
+	
+	<package name="struts2" namespace="/" extends="struts-default">
 		<!-- 配置拦截器 -->
 		<interceptors>
 			<!-- 自定义拦截链 -->
@@ -21,30 +43,24 @@
 				<param name="excludeMethods">welcome,query</param>
 			</interceptor>
 			<interceptor-stack name="myStack">
-				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="defaultStack" />
 				<!-- 执行顺序与配置顺序有关 -->
-				<interceptor-ref name="authority" >  
+				<interceptor-ref name="authority">
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		<!-- 设置默认拦截链,一个package下只能配置一个,应用所有的没有配置拦截器或拦截链的Action -->
-		 <default-interceptor-ref name="myStack"></default-interceptor-ref>
-		<!-- 定义全局Result -->  
-        <global-results>  
-            <!-- 当返回login视图名时，转入/login.jsp页面 -->  
-            <result name="login">/login.jsp</result>  
-        </global-results>
-        
-        <action name="welcome" method="welcome" class="com.struts.action.WelcomeAction">
-        	<result name="success">/welcome.jsp</result>
-        </action>
-        
-        <action name="hello" method="helloWorld" class="com.struts.action.HelloWorldAction">
-        	<result name="success">helloWorld.jsp</result>
-        </action>
-        
-        <action name="login" method="login" class="com.struts.action.LoginAction">
-        	<result name="success">helloWorld.jsp</result>
-        </action>
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<!-- 定义全局Result -->
+		<global-results>
+			<!-- 当返回login视图名时，转入/login.jsp页面 -->
+			<result name="login">/login.jsp</result>
+		</global-results>
+
+		<!-- <action name="welcome" method="welcome" class="com.struts.action.WelcomeAction"> 
+			<result name="success">/welcome.jsp</result> </action> <action name="hello" 
+			method="helloWorld" class="com.struts.action.HelloWorldAction"> <result name="success">helloWorld.jsp</result> 
+			</action> <action name="login" method="login" class="com.struts.action.LoginAction"> 
+			<result name="success">/login.jsp</result> </action> -->
 	</package>
 </struts>

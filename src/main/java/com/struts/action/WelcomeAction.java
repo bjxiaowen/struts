@@ -2,13 +2,16 @@ package com.struts.action;
 
 import java.util.List;
 
-/*import org.apache.struts2.convention.annotation.Action;
+import javax.annotation.Resource;
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;*/
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
 import com.opensymphony.xwork2.ActionSupport;
 import com.struts.pojo.Customer;
 import com.struts.service.ICustomerService;
-//@Namespace("/")
+@Namespace("/")
 public class WelcomeAction extends ActionSupport{
 
 	/**
@@ -18,6 +21,7 @@ public class WelcomeAction extends ActionSupport{
 	
 	private String username;
 	
+	@Resource(name="customerService")
 	ICustomerService customerService;
 	
 
@@ -33,7 +37,7 @@ public class WelcomeAction extends ActionSupport{
 		this.username = username;
 	}
 
-	//@Action(value="welcome", results={@Result(name="success",location="welcome.jsp")})
+	@Action(value="welcome", results={@Result(name="success",location="welcome.jsp")})
 	public String welcome() {
 		try{
 			List<Customer> list=customerService.listCustomer();
